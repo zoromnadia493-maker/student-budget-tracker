@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Budget Tracker - Tests</title>
+</head>
+
+<body>
+
+    <h1>Student Budget Tracker - Test Results</h1>
+
+    <div id="test-results"></div>
+
+    <script>
+        const results = document.getElementById("test-results");
+
+        function runTest(name, condition) {
+            const result = document.createElement("p");
+
+            if (condition) {
+                result.textContent = "PASS: " + name;
+            } else {
+                result.textContent = "FAIL: " + name;
+            }
+
+            results.appendChild(result);
+        }
+
+        // Test 1
+        const budget = 1000;
+        const spent = 250;
+
+        runTest(
+            "Remaining budget is calculated correctly",
+            budget - spent === 750
+        );
+
+        // Test 2
+        const validAmount = 50;
+
+        runTest(
+            "A positive expense amount is valid",
+            validAmount > 0
+        );
+
+        // Test 3
+        const negativeAmount = -20;
+
+        runTest(
+            "A negative expense is rejected",
+            negativeAmount <= 0
+        );
+
+        // Test 4
+        const currentBudget = 500;
+        const currentSpent = 400;
+        const newExpense = 150;
+
+        runTest(
+            "An expense exceeding the remaining budget is rejected",
+            newExpense > currentBudget - currentSpent
+        );
+
+        // Test 5
+        const emptyName = "";
+
+        runTest(
+            "An empty expense name is rejected",
+            emptyName.trim() === ""
+        );
+
+        // Test 6
+        const validName = "Groceries";
+
+        runTest(
+            "A valid expense name is accepted",
+            validName.trim() !== ""
+        );
+    </script>
+
+</body>
+</html>
