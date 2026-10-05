@@ -37,4 +37,4 @@ student-budget-tracker/
 │
 └── tests/
     ├── test.html
-    └── tests.js
+    └── test.js
